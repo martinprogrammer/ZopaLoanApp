@@ -70,12 +70,19 @@ namespace ZopaDAL.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Lender,Rate,Available
+        ///Bob,0.075,640
+        ///Jane,0.069,480
+        ///Fred,0.071,520
+        ///Mary,0.104,170
+        ///John,0.081,320
+        ///Dave,0.074,140
+        ///Angela,0.071,60
+        ///.
         /// </summary>
-        internal static byte[] MarketData1 {
+        internal static string MarketData1 {
             get {
-                object obj = ResourceManager.GetObject("MarketData1", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("MarketData1", resourceCulture);
             }
         }
     }

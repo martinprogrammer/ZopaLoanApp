@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using ZopaDAL.Logic;
 using ZopaDAL.Models;
+using System.IO;
 
 namespace ZopaDALTests
 {
@@ -13,10 +14,10 @@ namespace ZopaDALTests
     class CSVRepositoryTests
     {
         const string NONVALIDFILENAME = "noName.csv";
-        const string VALIDFILENAME = "MarketData";
+        const string VALIDFILENAME = "MarketData1";
 
         [Test]
-        public void GetAllLoanOffers_Should_Get_All_Loans()
+        public void GivenValidFileName_GetAllLoanOffers_Should_Get_All_Loans()
         {
             //arrange
             var loanRepo = new CSVLoanRepository(VALIDFILENAME);
@@ -29,5 +30,14 @@ namespace ZopaDALTests
             Assert.AreEqual(7, loans.Count);
         }
 
+        [Test]
+        public void GivenNonValidFileName_GetAllLoanOffers_Should_Get_Loans()
+        {
+            //arrange
+            var loanRepo = new CSVLoanRepository(NONVALIDFILENAME);
+
+            //assert
+            Assert.Throws<FileNotFoundException>(() => loanRepo.GetLoans());
+        }
     }
 }
