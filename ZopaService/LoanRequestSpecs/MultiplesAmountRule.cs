@@ -7,14 +7,14 @@ using ZopaService.Models;
 
 namespace ZopaService.LoanRequestSpecs
 {
-   public class MaximumAmountRule : IRequestRule
+    public class MultiplesAmountRule : IRequestRule
     {
         public Message<LoanRequest> SatisfySpecification(Message<LoanRequest> request)
         {
-            if(request.ContentObject.Amount>15000)
+            if (request.ContentObject.Amount %100 != 0)
             {
                 request.Success = false;
-                request.ErrorMessage = ErrorsEnum.TOOBIGAMOUNT;
+                request.ErrorMessage = ErrorsEnum.INCORRECTMULTIPLE;
             }
 
             return request;

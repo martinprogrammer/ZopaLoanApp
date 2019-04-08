@@ -39,10 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formatters\DefaultResponseFormatter.cs" />
+    <Compile Include="Formatters\IResponseFormatter.cs" />
+    <Compile Include="LoanMaketSpecs\ILoanMarketRule.cs" />
+    <Compile Include="LoanMaketSpecs\SufficientOffersToSatisfyLoanRequestRule.cs" />
+    <Compile Include="Models\ErrorsEnum.cs" />
     <Compile Include="LoanRequestSpecs\IRequestRule.cs" />
     <Compile Include="LoanRequestSpecs\MaximumAmountRule.cs" />
+    <Compile Include="LoanRequestSpecs\MinimumAmountRule.cs" />
+    <Compile Include="LoanRequestSpecs\MultiplesAmountRule.cs" />
     <Compile Include="LoanSelectorLogic\ILoanSelectorLogic.cs" />
-    <Compile Include="LoanSelectorLogic\LowestInterestSyntheticLoan.cs" />
+    <Compile Include="LoanSelectorLogic\LowestInterestSyntheticLoanSelectorLogic.cs" />
     <Compile Include="Models\LoanResponse.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\LoanRequest.cs" />
@@ -50,9 +57,7 @@
     <Compile Include="Service\ILoanService.cs" />
     <Compile Include="Service\LoanServiceFromCSV.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Formatters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ZopaDAL\ZopaDAL.csproj">
       <Project>{6f479d01-5bb4-4069-9ddf-8c390adca78b}</Project>

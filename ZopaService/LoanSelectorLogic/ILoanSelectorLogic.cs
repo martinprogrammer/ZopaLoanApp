@@ -10,6 +10,6 @@ namespace ZopaService.LoanSelectorLogic
 {
     public interface ILoanSelectorLogic
     {
-        Message<LoanResponse> OptimalLoan(IList<Loan> loans, Message<LoanRequest> request);
+        Message<LoanResponse> GetOptimalLoan(IList<Loan> loans, Message<LoanRequest> request);
     }
 }

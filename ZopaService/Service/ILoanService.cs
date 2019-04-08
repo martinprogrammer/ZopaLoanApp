@@ -10,5 +10,6 @@ namespace ZopaService.Service
     public interface ILoanService
     {
         Message<LoanResponse> GetOptimalLoanFor(Message<LoanRequest> request);
+        Message<LoanRequest> ValidateRequest(Message<LoanRequest> request);
     }
 }

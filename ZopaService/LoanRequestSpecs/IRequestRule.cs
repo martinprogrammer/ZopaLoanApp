@@ -9,6 +9,6 @@ namespace ZopaService.LoanRequestSpecs
 {
     public interface IRequestRule
     {
-        bool SatisfySpecification(Message<LoanRequest> request);
+        Message<LoanRequest> SatisfySpecification(Message<LoanRequest> request);
     }
 }
