@@ -20,7 +20,7 @@ namespace ZopaDAL.Logic
 
         }
 
-        public string GetRows()
+        public string GetRawRows()
         {
             string csvRows;
 
@@ -39,9 +39,9 @@ namespace ZopaDAL.Logic
             throw new FileNotFoundException();
         }
 
-        public string[] GetRowsAsStringArray()
+        public string[] GetRows()
         {
-            string rawString = GetRows();
+            string rawString = GetRawRows();
             rawString = rawString.Replace('\n', '\r');
             string[] rows = rawString.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
             return rows;

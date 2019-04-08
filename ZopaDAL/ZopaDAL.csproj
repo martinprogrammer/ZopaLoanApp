@@ -42,6 +42,7 @@
     <Compile Include="Logic\CSVLoanRepository.cs" />
     <Compile Include="Logic\ILoanRepository.cs" />
     <Compile Include="Logic\ImportDataFromCSV.cs" />
+    <Compile Include="Mappings\LoansMapper.cs" />
     <Compile Include="Models\Loan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.Designer.cs">

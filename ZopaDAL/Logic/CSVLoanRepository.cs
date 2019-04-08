@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZopaDAL.Models;
+using ZopaDAL.Mappings;
 
 namespace ZopaDAL.Logic
 {
@@ -16,7 +17,9 @@ namespace ZopaDAL.Logic
         }
         public IList<Loan> GetLoans()
         {
-            throw new NotImplementedException();
+            var rows = import.GetRows();
+            var loans = rows.MapStringArrayToLoans();
+            return loans;
         }
     }
 }
