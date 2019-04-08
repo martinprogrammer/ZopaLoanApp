@@ -8,8 +8,9 @@ namespace ZopaService.Models
 {
     public class LoanResponse
     {
-        public string Lender { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Interest { get; set; }
+        public decimal RequestedAmount { get; set; }
+        public decimal Rate { get; set; }
+        public decimal MonthlyRepayment { get; set; }
+        public decimal TotalRepayment { get; set; }
     }
 }

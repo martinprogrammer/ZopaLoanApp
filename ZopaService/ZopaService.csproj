@@ -39,14 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoanRequestSpecs\IRequestRule.cs" />
+    <Compile Include="LoanRequestSpecs\MaximumAmountRule.cs" />
+    <Compile Include="LoanSelectorLogic\ILoanSelectorLogic.cs" />
+    <Compile Include="LoanSelectorLogic\LowestInterestSyntheticLoan.cs" />
     <Compile Include="Models\LoanResponse.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\LoanRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ILoanService.cs" />
+    <Compile Include="Service\LoanServiceFromCSV.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LoanRequestSpecs\" />
-    <Folder Include="Service\" />
+    <Folder Include="Formatters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZopaDAL\ZopaDAL.csproj">
+      <Project>{6f479d01-5bb4-4069-9ddf-8c390adca78b}</Project>
+      <Name>ZopaDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

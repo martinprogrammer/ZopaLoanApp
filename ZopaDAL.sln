@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZopaDALTests", "ZopaDALTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZopaService", "ZopaService\ZopaService.csproj", "{3DF7765B-B011-456E-A937-0CE483106012}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZopaServiceTests", "ZopaServiceTests\ZopaServiceTests.csproj", "{51152F5C-582D-4F33-BBEB-966F8EE9B9F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3DF7765B-B011-456E-A937-0CE483106012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DF7765B-B011-456E-A937-0CE483106012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DF7765B-B011-456E-A937-0CE483106012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51152F5C-582D-4F33-BBEB-966F8EE9B9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51152F5C-582D-4F33-BBEB-966F8EE9B9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51152F5C-582D-4F33-BBEB-966F8EE9B9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51152F5C-582D-4F33-BBEB-966F8EE9B9F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
