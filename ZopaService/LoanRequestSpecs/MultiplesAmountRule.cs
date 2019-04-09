@@ -11,6 +11,8 @@ namespace ZopaService.LoanRequestSpecs
     {
         public Message<LoanRequest> SatisfySpecification(Message<LoanRequest> request)
         {
+            request.Success = true;
+
             if (request.ContentObject.Amount %100 != 0)
             {
                 request.Success = false;

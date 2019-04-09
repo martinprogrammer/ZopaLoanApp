@@ -10,6 +10,7 @@ using ZopaService.LoanMaketSpecs;
 using ZopaService.LoanRequestSpecs;
 using ZopaService.LoanSelectorLogic;
 using ZopaService.Models;
+using ZopaService.Mappers;
 
 namespace ZopaService.Service
 {
@@ -19,14 +20,18 @@ namespace ZopaService.Service
         IList<ILoanMarketRule> _loanMarketSpecs;
         ILoanSelectorLogic _responseLogic;
         IResponseFormatter _responseFormatter;
+        ILoanRepository _repository;
 
 
-        public LoanServiceFromCSV(IList<IRequestRule> requestSpecs, ILoanSelectorLogic responseLogic, IResponseFormatter responseFormatter, IList<ILoanMarketRule> loanMarketSpecs)
+        public LoanServiceFromCSV(IList<IRequestRule> requestSpecs, ILoanSelectorLogic responseLogic, IResponseFormatter responseFormatter, 
+            IList<ILoanMarketRule> loanMarketSpecs, ILoanRepository repository)
         {
             _requestSpecs = requestSpecs;
             _responseLogic = responseLogic;
             _responseFormatter = responseFormatter;
             _loanMarketSpecs = loanMarketSpecs;
+            _repository = repository;
+           
         }
 
         public LoanServiceFromCSV()
@@ -40,18 +45,17 @@ namespace ZopaService.Service
             _loanMarketSpecs = new List<ILoanMarketRule>();
             _loanMarketSpecs.Add(new SufficientOffersToSatisfyLoanRequestRule());
 
-            _responseLogic = new LowestInterestSyntheticLoanSelectorLogic();
+            _responseLogic = new ThreeYearCompoundInterestLoanSelector();
             _responseFormatter = new DefaultResponseFormatter();
+            _repository = new CSVLoanRepository("MarketData1");
         }
 
 
-        public Models.Message<Models.LoanResponse> GetOptimalLoanFor(Models.Message<Models.LoanRequest> request)
+        public Models.Message<Models.LoanResponse> GetOptimalLoanFor(decimal amount)
         {
-            ILoanRepository repository = new CSVLoanRepository("MarketData1");
-
+            var request = amount.ToMessageOfLoanRequest();
             var response = new Message<LoanResponse>();
-
-            var loans = repository.GetLoans();
+            var loans = _repository.GetLoans().OrderBy(p=>p.Interest).ToList();
 
             var validLoans = ValidateLoans(new Message<IList<Loan>>(){ContentObject = loans}, request.ContentObject.Amount);
 
@@ -78,6 +82,7 @@ namespace ZopaService.Service
 
         public Message<IList<Loan>> ValidateLoans(Message<IList<Loan>> loans, decimal amount)
         {
+            
             foreach(ILoanMarketRule rule in _loanMarketSpecs)
             {
                 if (rule.SatisfySpecification(loans, amount).Success == false)
@@ -87,7 +92,6 @@ namespace ZopaService.Service
             }
 
             return loans;
-
         }
 
         public Message<LoanRequest> ValidateRequest(Models.Message<Models.LoanRequest> request)

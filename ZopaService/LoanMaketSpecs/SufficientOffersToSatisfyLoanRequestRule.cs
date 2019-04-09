@@ -12,6 +12,8 @@ namespace ZopaService.LoanMaketSpecs
     {
         public Models.Message<IList<ZopaDAL.Models.Loan>> SatisfySpecification(Models.Message<IList<ZopaDAL.Models.Loan>> loans, decimal amount)
         {
+            loans.Success = true;
+
             if (loans.ContentObject.Select(p => p.Amount).ToList().Sum() < amount)
             {
                 loans.Success = false;

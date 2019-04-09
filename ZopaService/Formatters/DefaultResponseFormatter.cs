@@ -10,7 +10,11 @@ namespace ZopaService.Formatters
     {
         public Models.Message<Models.LoanResponse> FormatLoanResponse(Models.Message<Models.LoanResponse> response)
         {
-            throw new NotImplementedException();
+
+            response.ContentObject.MonthlyRepayment = decimal.Round(response.ContentObject.MonthlyRepayment, 2);
+            response.ContentObject.TotalRepayment = decimal.Round(response.ContentObject.TotalRepayment, 2);
+
+            return response;
         }
     }
 }

@@ -64,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZopaDAL\ZopaDAL.csproj">
+      <Project>{6f479d01-5bb4-4069-9ddf-8c390adca78b}</Project>
+      <Name>ZopaDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZopaService\ZopaService.csproj">
       <Project>{3df7765b-b011-456e-a937-0ce483106012}</Project>
       <Name>ZopaService</Name>
