@@ -13,8 +13,8 @@ namespace ZopaConsole
         {
           
                 decimal amount = 0;
-                //bool correctAmount = decimal.TryParse(args[0], out amount);
-                bool correctAmount = decimal.TryParse("1000", out amount);
+                bool correctAmount = decimal.TryParse(args[0], out amount);
+               // bool correctAmount = decimal.TryParse("1000", out amount);
                 
                 if (!correctAmount)
                     Console.WriteLine("Incorrect amount");
